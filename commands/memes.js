@@ -1,22 +1,50 @@
+const { prefix } = require('../config.json');
+
 module.exports = {
-  name: 'ucthat!',
-  description: 'Run a UC that!',
+  name: `${prefix}m`,
+  description: `Create a meme!
+  Choose an argument:
+  <> ucthat
+  <> stinks
+  <> rngesus
+  <> why`,
   execute(msg, args) {
-    msg.channel.send({
-      files: [{
-        attachment: 'https://i.imgur.com/PN6nMJa.jpg',
-        name: 'ucthat.png'
-      }]
-    })
-  },
-  name: 'stinks!',
-  description: 'Un-Stonks!',
-  execute(msg, args) {
-    msg.channel.send({
-      files: [{
-        attachment: 'https://ib.downloadapk.net/unstonks+k_trN2YffH_150.png',
-        name: 'stinks.png'
-      }]
-    })
-  },
+    const arg = args[0]
+
+    if (arg === 'ucthat') {
+      msg.channel.send({
+        files: [{
+          attachment: 'https://i.imgur.com/PN6nMJa.jpg',
+          name: 'ucthat.png'
+        }]
+      })
+    }
+
+    if (arg === 'stinks') {
+      msg.channel.send({
+        files: [{
+          attachment: 'https://ib.downloadapk.net/unstonks+k_trN2YffH_150.png',
+          name: 'stinks.png'
+        }]
+      })
+    }
+
+    if (arg === 'rngesus') {
+      msg.channel.send({
+        files: [{
+          attachment: 'https://i.pinimg.com/originals/b0/38/8c/b0388cce1540f49543711b5aee696050.png',
+          name: 'rngesus.png'
+        }]
+      })
+    }
+
+    if (arg === 'why') {
+      msg.channel.send({
+        files: [{
+          attachment: 'https://i.pinimg.com/originals/16/47/8d/16478dff79d566ccb958bbf6ea1c1ba3.png',
+          name: 'why.png'
+        }]
+      })
+    }
+  }
 };

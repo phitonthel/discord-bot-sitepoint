@@ -1,8 +1,6 @@
-function monteSim(nTry, attempts, prob) {
-  return `${nTry}, ${attempts}, ${prob}`
-}
+const { prefix } = require('../config.json');
 
-function monteSim2 (iteration, nTry, chanceOfSuccess) {
+function monteSim (iteration, nTry, chanceOfSuccess) {
   let peoples = []
   let arrNumOfSuccess = []
   let arrSuccessBool = []
@@ -42,15 +40,19 @@ function monteSim2 (iteration, nTry, chanceOfSuccess) {
 }
 
 module.exports = {
-  name: 'monte',
-  description: 'Run a Monte Carlo Simulation!',
+  name: `${prefix}monte`,
+  description: `Run a Monte Carlo Simulation!
+Takes 3 arguments: 
+  <number_of_tries:number> 
+  <number_of_attempts:number> 
+  <probability:number>`,
   execute(msg, args) {
     msg.channel.send(`running a monte carlo simulations...
     Number of People Who Tries: ${args[0]}
     Number of Attempt per Person: : ${args[1]}
     Probability of Success: ${args[2]}`);
     if (args[0] < 10000 && args[1] < 500) {
-      msg.channel.send(monteSim2(args[0], args[1], args[2]));
+      msg.channel.send(monteSim(args[0], args[1], args[2]));
     } else {
       msg.channel.send(`Nigga you wanna destroy my server?`);
     }

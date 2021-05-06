@@ -1,8 +1,10 @@
 require('dotenv').config();
 const Discord = require('discord.js');
+const botCommands = require('./commands');
+
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
-const botCommands = require('./commands');
+// bot.aliases = new Discord.Collection()
 
 Object.keys(botCommands).map(key => {
   bot.commands.set(botCommands[key].name, botCommands[key]);
@@ -19,6 +21,10 @@ bot.on('ready', () => {
 bot.on('message', msg => {
   const args = msg.content.split(/ +/);
   const command = args.shift().toLowerCase();
+
+  // const commandAlias = bot.commands.get(command) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
+  // if (!commandAlias) return;
+  
   console.info(`Called command: ${command}, with args: ${args}`);
 
   if (!bot.commands.has(command)) return;
