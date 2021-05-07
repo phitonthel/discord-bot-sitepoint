@@ -1,6 +1,9 @@
 module.exports = {
   Ping: require('./ping'),
   Monte: require('./monte'),
-  Memes: require('./memes'),
-  Readme: require('./readme')
+  MHmemes: require('./mh-meme'),
+  Readme: require('./readme'),
+  Cantik: require('./cantik'),
+  Scrape: require('./scrape-tag'),
+  MemeAPI: require('./meme-api')
 };

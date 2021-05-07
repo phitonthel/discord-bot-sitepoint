@@ -1,15 +1,22 @@
 const { prefix } = require('../config.json');
 
+const desc = `Create a mousehunt meme!
+Choose an argument:
+<> ucthat
+<> stinks
+<> rngesus
+<> why`
+
 module.exports = {
-  name: `${prefix}m`,
-  description: `Create a meme!
-  Choose an argument:
-  <> ucthat
-  <> stinks
-  <> rngesus
-  <> why`,
+  name: `${prefix}mh`,
+  description: desc,
   execute(msg, args) {
     const arg = args[0]
+
+    // validation
+    if (!arg) {
+      msg.channel.send(desc)
+    }
 
     if (arg === 'ucthat') {
       msg.channel.send({

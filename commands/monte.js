@@ -39,14 +39,22 @@ function monteSim (iteration, nTry, chanceOfSuccess) {
   return '```ts\n' + output + '\n```'
 }
 
+const desc = `Run a Monte Carlo Simulation!
+Takes 3 arguments: 
+  <> number_of_tries:number [required]
+  <> number_of_attempts:number [required]
+  <> probability:number [required]`
+
 module.exports = {
   name: `${prefix}monte`,
-  description: `Run a Monte Carlo Simulation!
-Takes 3 arguments: 
-  <number_of_tries:number> 
-  <number_of_attempts:number> 
-  <probability:number>`,
+  description: desc,
   execute(msg, args) {
+    const arg = args[0]
+
+    if (!args[0] || !args[1] || !args[2]) {
+      return msg.channel.send(desc)
+    }
+
     msg.channel.send(`running a monte carlo simulations...
     Number of People Who Tries: ${args[0]}
     Number of Attempt per Person: : ${args[1]}
