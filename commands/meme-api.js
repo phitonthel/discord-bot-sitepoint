@@ -24,7 +24,7 @@ module.exports = {
         })
     }
 
-    if (arg <= 5) {
+    if (arg <= 10) {
       axios.get(`https://meme-api.herokuapp.com/gimme/${arg}`)
         .then((response) => {
           console.log('response=', response);
@@ -40,7 +40,7 @@ module.exports = {
         })
     }
 
-    if (arg > 5) {
+    if (arg > 10) {
       msg.channel.send(`Can only send max 5 memes`)
     }
 

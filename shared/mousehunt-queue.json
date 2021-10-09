@@ -1,0 +1,74 @@
+{
+  "counter": 13,
+  "queues": [
+    {
+      "id": 10,
+      "name": "bags",
+      "mice": "igna"
+    },
+    {
+      "id": 11,
+      "name": "delphito",
+      "mice": "shade_of_eclipse_20SB"
+    },
+    {
+      "id": 13,
+      "name": "bags",
+      "mice": "ss"
+    }
+  ],
+  "cancelled": [
+    {
+      "id": 2,
+      "name": "delphito",
+      "mice": "sizzle_only"
+    },
+    {
+      "id": 3,
+      "name": "delphito",
+      "mice": "sizzle"
+    },
+    {
+      "id": 6,
+      "name": "delp",
+      "mice": "mild"
+    },
+    {
+      "id": 7,
+      "name": "delp",
+      "mice": "mild"
+    },
+    {
+      "id": 8,
+      "name": "mabrur",
+      "mice": "igna"
+    },
+    {
+      "id": 9,
+      "name": "mabrur",
+      "mice": "igna_cinder_smol"
+    },
+    {
+      "id": 12,
+      "name": "test",
+      "mice": "ss"
+    }
+  ],
+  "completed": [
+    {
+      "id": 1,
+      "name": "bartolomeus",
+      "mice": "sizzle_mild"
+    },
+    {
+      "id": 4,
+      "name": "delphito",
+      "mice": "sizzle"
+    },
+    {
+      "id": 5,
+      "name": "delphito",
+      "mice": "corka"
+    }
+  ]
+}

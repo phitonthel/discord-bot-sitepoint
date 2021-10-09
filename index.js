@@ -19,7 +19,7 @@ bot.on('ready', () => {
 });
 
 bot.on('message', msg => {
-  const args = msg.content.split(/ +/);
+  args = msg.content.split(/ +/);
   const command = args.shift().toLowerCase();
 
   // const commandAlias = bot.commands.get(command) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));

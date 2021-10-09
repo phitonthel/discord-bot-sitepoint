@@ -1,9 +1,9 @@
 const { prefix } = require('../config.json');
 
 module.exports = {
-  name: `${prefix}ping`,
-  description: 'Return a pong!',
+  name: `${prefix}hi!`,
+  description: 'Beep boop, boop beep!',
   execute(msg, args) {
-    msg.reply('pong');
+    msg.reply('Beep boop, boop beep!');
   },
 };

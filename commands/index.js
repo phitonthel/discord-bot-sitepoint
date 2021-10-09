@@ -1,9 +1,12 @@
 module.exports = {
   Ping: require('./ping'),
+  Readme: require('./readme'),
+  Scrape: require('./scrape-tag'),
+  MemeAPI: require('./meme-api'),
   Monte: require('./monte'),
   MHmemes: require('./mh-meme'),
-  Readme: require('./readme'),
-  Cantik: require('./cantik'),
-  Scrape: require('./scrape-tag'),
-  MemeAPI: require('./meme-api')
+  Sandbox: require('./sandbox'),
+  Translator: require('./translator'),
+  MouseHuntSniping: require('./mh-sniping'),
+  Marketplace: require('./marketplace')
 };

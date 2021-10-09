@@ -1,7 +1,6 @@
 const { prefix } = require('../config.json');
 
 function monteSim (iteration, nTry, chanceOfSuccess) {
-  let peoples = []
   let arrNumOfSuccess = []
   let arrSuccessBool = []
   let output = ''
@@ -10,7 +9,7 @@ function monteSim (iteration, nTry, chanceOfSuccess) {
       person = [false, 0]
   
       for (let j = 0; j < nTry; j++) {
-          r = Math.random()
+          const r = Math.random()
           if (r < chanceOfSuccess) {
               person[0] = true
               person[1] += 1          
@@ -22,13 +21,16 @@ function monteSim (iteration, nTry, chanceOfSuccess) {
   
   let sortedArrSuccessBool = arrSuccessBool.sort()
   let sortedArrNumOfSuccess = arrNumOfSuccess.sort()
+
+  let n_person_succeed = sortedArrSuccessBool.filter(x => x === true).length
+  let n_person_failed = sortedArrSuccessBool.filter(x => x === false).length
   
-  output += `Succeed: ${sortedArrSuccessBool.filter(x => x === true).length}\n`
-  output += `Failed: ${sortedArrSuccessBool.filter(x => x === false).length}\n\n`
+  output += `Succeed: ${n_person_succeed}\n`
+  output += `Failed: ${n_person_failed} (${((n_person_failed / iteration) * 100).toFixed(3)}%)\n\n`
   
   output += `Out of ${iteration} people tried ${nTry} time(s):\n`
   let isAngkaAwalUdahMuncul = false
-  for (let i = 1; i < 100; i++) {
+  for (let i = 1; i <= nTry; i++) {
       let countNumOfSuccess = sortedArrNumOfSuccess.filter(x => x === i).length
       if (countNumOfSuccess != 0) {
           isAngkaAwalUdahMuncul == true
@@ -59,7 +61,7 @@ module.exports = {
     Number of People Who Tries: ${args[0]}
     Number of Attempt per Person: : ${args[1]}
     Probability of Success: ${args[2]}`);
-    if (args[0] < 10000 && args[1] < 500) {
+    if (args[0] <= 100000 && args[1] <= 500) {
       msg.channel.send(monteSim(args[0], args[1], args[2]));
     } else {
       msg.channel.send(`Nigga you wanna destroy my server?`);
