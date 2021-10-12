@@ -66,6 +66,7 @@ module.exports = {
     // add timestamp
     data[authorID].timestamp = Math.floor((new Date()).getTime() / 1000)
 
+    // parse 'b>' and 's>' => add to both data and newData
     args.forEach((arg, index) => {
       if (arg == 'b>') {
         data[authorID].buy[args[index + 1]] = args[index + 2]
@@ -117,7 +118,9 @@ module.exports = {
     }
 
     fs.writeFileSync(fsPath, JSON.stringify(data, null, 2), 'utf8')
-    const members = await bot.guilds.get('895950998667952129').fetchMembers() // TA
+
+    // Discord use cache system, so this code below needs to be run. This will get us all the members
+    await bot.guilds.get('895950998667952129').fetchMembers()
 
     // notify other users about the author post
     mentionedUsers.forEach(mentionedUser => {
@@ -130,15 +133,16 @@ module.exports = {
 
     // notify the author
     msg.author.send(`Posted! I'll notify all the previous users that matches your listing. To check your status, type: \`$ status\``)
-
-    // parse mentioned Users
-    // let mentionedUsersSTR = ``
-    // mentionedUsers.forEach(mentionedUser => {
-    //   mentionedUsersSTR += `<@${mentionedUser}> `
-    // });
-
-    // msg.channel.send(`<@${authorID}>'s new listings have something that may interest you:
-    // ${JSON.stringify(newData)}
-    // ${mentionedUsersSTR}`)
   }
 };
+
+// archived
+// parse mentioned Users
+// let mentionedUsersSTR = ``
+// mentionedUsers.forEach(mentionedUser => {
+//   mentionedUsersSTR += `<@${mentionedUser}> `
+// });
+
+// msg.channel.send(`<@${authorID}>'s new listings have something that may interest you:
+// ${JSON.stringify(newData)}
+// ${mentionedUsersSTR}`)
