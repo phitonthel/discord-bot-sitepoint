@@ -90,19 +90,8 @@ module.exports = {
           if (Object.hasOwnProperty.call(data, userID)) {
             const userData = data[userID];
 
-            // loop in sell (because newItem = buy)
-            for (const dbItem in userData.sell) {
-              if (Object.hasOwnProperty.call(userData.sell, dbItem)) {
-                const dbPrice = userData.sell[dbItem];
-
-                // if the item name matches:
-                if (newItem.toLowerCase() == dbItem.toLowerCase()) {
-                  // compare the price
-                  if (+dbPrice <= +price) {
-                    mentionedUsers.push(userID)
-                  }
-                }
-              }
+            if (+userData.sell[newItem] <= +price) {
+              mentionedUsers.push(userID)
             }
           }
         }
@@ -119,19 +108,8 @@ module.exports = {
           if (Object.hasOwnProperty.call(data, userID)) {
             const userData = data[userID];
 
-            // loop in buy (because newItem = sell)
-            for (const dbItem in userData.buy) {
-              if (Object.hasOwnProperty.call(userData.buy, dbItem)) {
-                const dbPrice = userData.buy[dbItem];
-
-                // if the item name matches:
-                if (newItem.toLowerCase() == dbItem.toLowerCase()) {
-                  // compare the price
-                  if (+dbPrice >= +price) {
-                    mentionedUsers.push(userID)
-                  }
-                }
-              }
+            if (+userData.sell[newItem] >= +price) {
+              mentionedUsers.push(userID)
             }
           }
         }
@@ -144,10 +122,7 @@ module.exports = {
     // notify other users about the author post
     mentionedUsers.forEach(mentionedUser => {
       let messages = `[ID: <@${authorID}>] ${authorUsername}'s' new listing have something that may interest you:`
-      messages += "\`\`\`json\n"  + JSON.stringify(data[authorID], null, 4) + "\`\`\`"
-
-      // const message = `(ID: <@${authorID}>) ${authorUsername}'s' new listings have something that may interest you:
-      // ${JSON.stringify(newData, null, 2)}`
+      messages += "\`\`\`json\n"  + JSON.stringify(newData, null, 4) + "\`\`\`"
 
       // send
       bot.users.get(mentionedUser).send(messages);
