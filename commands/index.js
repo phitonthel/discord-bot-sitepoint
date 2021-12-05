@@ -8,5 +8,6 @@ module.exports = {
   Sandbox: require('./sandbox'),
   Translator: require('./translator'),
   MouseHuntSniping: require('./mh-sniping'),
-  Marketplace: require('./marketplace')
+  Marketplace: require('./marketplace'),
+  Assets: require('./assets')
 };
